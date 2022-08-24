@@ -6,17 +6,27 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="../styles/login.css">
+ <link rel="stylesheet" href="../styles/global.css">
  <title>Login</title>
 </head>
 
 <body>
  <section class="formulario">
-  <form>
-   <h2>Bienvenido</h2>
-   <input type="email" placeholder="example@example.com" required>
-   <input type="password" placeholder="password" required>
-   <p class="terminos">Olvidé mi constraseña</p>
-   <button type="submit">Entrar</button>
+  <form class="formulario-login">
+   <legend class="legenda">Loguearse</legend>
+   <div class="mb-3 correo contenedores-login">
+    <label for="exampleFormControlInput1" class="form-label ">Email</label>
+    <input type="email" class="form-control input-text" id="exampleFormControlInput1" placeholder="name@example.com">
+   </div>
+
+   <div class="mb-3 correo contenedores-login">
+    <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+    <input type="password" class="form-control input-text" id="exampleFormControlInput1" placeholder="password">
+   </div>
+
+
+   <a class="terminos correo contenedores-login" href="">Olvidé mi constraseña</a>
+   <button type=" submit" class="correo contenedores-login boton">Entrar</button>
   </form>
  </section>
 </body>
