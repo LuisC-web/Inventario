@@ -1,3 +1,4 @@
+
 {
   "name": "inventario",
   "version": "1.0.0",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/LuisC-web/Inventario/issues"
   },
-  "homepage": "https://github.com/LuisC-web/Inventario#readme"
+  "homepage": "https://github.com/LuisC-web/Inventario#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  }
 }
