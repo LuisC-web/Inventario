@@ -1,55 +1,20 @@
-import validando from '../helpers/validando';
+import { validando, validarVacio } from '../helpers/validando.js';
 
-var vemail = document.getElementById('email');
-var vpassword = document.getElementById('password');
-var boton = document.getElementById('buttonSubmit');
-
-function obtenerDatos(e) {
-  console.log(e);
-  //Evitar propagación de eventos
+const $EMAIL = document.getElementById('email');
+const $PASSWORD = document.getElementById('password');
+const $BUTTONSUBMIT = document.getElementById('buttonSubmit');
+const manejarSubmit = (e) => {
   e.preventDefault();
-  let gpassword = vpassword.value;
-  let gemail = vemail.value;
-  if (ValidarUsuario(gemail, gpassword)) {
-    window.location.href = 'PaginaPrincipalAdm.html';
-    alert('Bienvenido página uno');
-  }
+  console.log(validarVacio($EMAIL.value, $PASSWORD.value));
+  if (!validarVacio($EMAIL.value, $PASSWORD.value))
+    return alert('El correo o constraseña está vacio');
+  if (validando($EMAIL.value, $PASSWORD.value) != true)
+    alert(validando($EMAIL.value, $BUTTONSUBMIT.value));
 
-  if (ValidarUsuario(gemail, gpassword)) {
-    alert('Por favor Ingrese su correo y su contraseña');
-  }
-
-  if (validando(gemail, gpassword) == true) return;
-  alert(validando(gemail, gpassword));
-}
-
-/*Verifica que los datos ingresados por el usuario no esten vacios 
-si los campos estan vaciòs retorna una variable booleana = true*/
-
-let ejemploUsur = 'a@';
-let ejempoPassword = '123';
-/* Verifica si el usuario y la constraseña existen el la base de datos
- se debe desarrolla la consulta a la base de datos a traves del desarrollo Back-End 
- retorna true si el usuario esta registrado*/
-
-function ValidarUsuario(usuario, constraseña) {
-  if (usuario === '') return false;
-  if (constraseña === '') return false;
-  return true;
-}
-
-//SE escucha primero que la página está cargada correctamente
-document.addEventListener('DOMContentLoaded', () => {
-  boton.addEventListener('click', (e) => obtenerDatos(e));
+  setInterval(() => {
+    console.log('Llamando API');
+  }, 5000);
+};
+document.addEventListener('DOMContentLoaded', (e) => {
+  $BUTTONSUBMIT.addEventListener('click', (e) => manejarSubmit(e));
 });
-
-/*HAY MUCHOS ERRORES DE MALAS PRÁCTICAS QUE SE DEJARON USAR DESDE LA VERSIÓN EMACSCRIPT 6
- COMO ES EL USO DE VAR. Se usa let o const. 
- Segundo no estás evitando la propagación de eventos que es importante para evitar inesperados en la aplicación.
- 
- EL nombramiento de variable del HTML no se escriben en minúsculas se escriben con la siguient notación 
-$BENVIARDATOS
-Signo dolar+ABREVIACIÓN DEL ELEMENTO + NOMBRE DEL ID O LO QUE HACE EL ELEMENTO Y todo en mayúscula
-
-Para mejorar las prácticas con condicionales se dejan los errores de primeros para al final poder realizar ejecutar la instrucción correcta. Y así evitamos un if/else hell
-*/
