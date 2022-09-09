@@ -2,9 +2,11 @@ import validando from '../helpers/validando';
 
 var vemail = document.getElementById('email');
 var vpassword = document.getElementById('password');
-var boton = document.getElementById('submit');
+var boton = document.getElementById('buttonSubmit');
 
-function ObtenerDatos(e) {
+function obtenerDatos(e) {
+  console.log(e);
+  //Evitar propagación de eventos
   e.preventDefault();
   let gpassword = vpassword.value;
   let gemail = vemail.value;
@@ -37,8 +39,8 @@ function ValidarUsuario(usuario, constraseña) {
 }
 
 //SE escucha primero que la página está cargada correctamente
-document.addEventListener('DOMContentLoaded', (e) => {
-  boton.addEventListener('click', ObtenerDatos(e));
+document.addEventListener('DOMContentLoaded', () => {
+  boton.addEventListener('click', (e) => obtenerDatos(e));
 });
 
 /*HAY MUCHOS ERRORES DE MALAS PRÁCTICAS QUE SE DEJARON USAR DESDE LA VERSIÓN EMACSCRIPT 6
@@ -49,5 +51,5 @@ document.addEventListener('DOMContentLoaded', (e) => {
 $BENVIARDATOS
 Signo dolar+ABREVIACIÓN DEL ELEMENTO + NOMBRE DEL ID O LO QUE HACE EL ELEMENTO Y todo en mayúscula
 
-Para mejorar las prácticas con condicionales se dejan los errores de primeros para al final poder realizar ejecutar la instrucción correcta. Y así evitamos un if/else
+Para mejorar las prácticas con condicionales se dejan los errores de primeros para al final poder realizar ejecutar la instrucción correcta. Y así evitamos un if/else hell
 */
