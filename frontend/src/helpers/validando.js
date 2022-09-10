@@ -21,4 +21,11 @@ const validando =
     }
     return 'El correo es inválido';
   };
-export default validando;
+
+const validarVacio = (mail, password) => {
+  if (mail === '') return false;
+  if (password === '') return false;
+  return true;
+};
+
+export { validando, validarVacio };

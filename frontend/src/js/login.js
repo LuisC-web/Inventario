@@ -1,59 +1,22 @@
 
-var vemail = document.getElementById("email");
-var vpassword = document.getElementById("password");
-var boton = document.getElementById("submit");
+import { validando, validarVacio } from '../helpers/validando.js';
 
-function ObtenerDatos() {
-    var gemail = vemail.value;
-    var gpassword = vpassword.value;
-    if (ValidarUsuario(gemail, gpassword)) {
-        window.location.href = "PaginaPrincipalAdm.html"
+const $EMAIL = document.getElementById('email');
+const $PASSWORD = document.getElementById('password');
+const $BUTTONSUBMIT = document.getElementById('buttonSubmit');
+const manejarSubmit = (e) => {
+  e.preventDefault();
+  console.log(validarVacio($EMAIL.value, $PASSWORD.value));
+  if (!validarVacio($EMAIL.value, $PASSWORD.value))
+    return alert('El correo o constraseña está vacio');
+  if (validando($EMAIL.value, $PASSWORD.value) != true)
+    alert(validando($EMAIL.value, $BUTTONSUBMIT.value));
 
-        alert("Bienvenido pagna uno")
-    }
-
-    if (ValidacionCamposVacios(gemail, gpassword)) {
-        alert("Por favor Ingrese su correo y su contraseña")
-    }
-
-    if (ValidarUsuario(gemail, gpassword) == false && ValidacionCamposVacios(gemail, gpassword) == false) {
-        alert("Correo o contraseña errada")
-
-    }
-
-}
-
-/*Verifica que los datos ingresados por el usuario no esten vacios 
-si los campos estan vaciòs retorna una variable booleana = true*/
-
-function ValidacionCamposVacios(email, password) {
-    var validacionCamposVacios = false;
-    if (email == "" || password == "") {
-        validacionCamposVacios = true;
-    }
-    return validacionCamposVacios;
-}
-
-
-var ejemploUsur = "a@"
-var ejempoPassword = "123"
-/* Verifica si el usuario y la constraseña existen el la base de datos
- se debe desarrolla la consulta a la base de datos a traves del desarrollo Back-End 
- retorna true si el usuario esta registrado*/
-
-function ValidarUsuario(usuario, constraseña) {
-    var validacionUsuario = false;
-    if (usuario === ejemploUsur & constraseña === ejempoPassword) {
-        validacionUsuario = true;
-    }
-    return validacionUsuario
-}
-
-
-//Ejecuta la funciòn 
-boton.addEventListener("click", ObtenerDatos)
-
-
-
-
+  setInterval(() => {
+    console.log('Llamando API');
+  }, 5000);
+};
+document.addEventListener('DOMContentLoaded', (e) => {
+  $BUTTONSUBMIT.addEventListener('click', (e) => manejarSubmit(e));
+});
 
