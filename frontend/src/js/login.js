@@ -1,3 +1,4 @@
+
 import { validando, validarVacio } from '../helpers/validando.js';
 
 const $EMAIL = document.getElementById('email');
@@ -18,3 +19,4 @@ const manejarSubmit = (e) => {
 document.addEventListener('DOMContentLoaded', (e) => {
   $BUTTONSUBMIT.addEventListener('click', (e) => manejarSubmit(e));
 });
+
